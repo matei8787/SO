@@ -30,7 +30,7 @@ int open_tofile(char* nume)
             return -1;
         }
     }
-    int ans = open(nume, O_WRONLY | O_CREAT);
+    int ans = open(nume, O_WRONLY | O_CREAT, 0666);
     if ( ans < 0 )
     {
         printf("Fisierul de scriere nu poate fi deschis\nNumarul erorii %d\n", errno);

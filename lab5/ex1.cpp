@@ -62,7 +62,6 @@ int main(int argc, char* argv[])
         printf("Nu am putut sa truncam fd-ul");
         return errno;
     }
-
     for ( int i = 1 ; i < argc ; i++ )
     {
         pid_t pid = fork();
@@ -77,6 +76,9 @@ int main(int argc, char* argv[])
             printf("Done. Parent = %d, Me = %d\n", getppid(), getpid());
             exit(0);
         }
+    }
+    for ( int i = 1 ; i < argc ; i++ )
+    {
         wait(NULL);
     }
     for ( int i = 1 ; i < argc ; i++ )
@@ -88,7 +90,6 @@ int main(int argc, char* argv[])
             return errno;
         }
         printf("%s", static_cast<char*>(sptr));
-        
     }
     void* sptr = mmap(0, getpagesize() * argc, PROT_READ, MAP_SHARED, sfd, 0);
     if ( munmap(sptr, getpagesize() * argc) == -1 )

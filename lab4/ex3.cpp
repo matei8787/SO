@@ -52,5 +52,6 @@ int main(int argc, char* argv[])
             exit(0);
         }
     }
-
+    for ( int i = 1 ; i < argc ; i++ )
+        wait(NULL);
 }
